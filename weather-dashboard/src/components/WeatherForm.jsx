@@ -71,7 +71,7 @@ const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit, weatherDa
                     placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="p-2 rounded-md border-none py-2 px-8 outline-none focus:ring-2 focus:ring-indigo-300 text-black"
+                    className="p-2 rounded-md border-none py-2 px-5 outline-none focus:ring-2 focus:ring-indigo-300 text-black"
                 />
 
                 <button
@@ -90,7 +90,7 @@ const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit, weatherDa
                 
                 <button
                     onClick={toggleUnit}
-                    className="mt-4 mb-4 bg-blue-300 px-7 py-2 rounded-md hover:bg-blue-400 transition"
+                    className="mt-4 mb-4 bg-blue-300 px-4 py-2 rounded-md hover:bg-blue-400 transition"
                  >
                 Switch to {unit === 'metric' ? '°F' : '°C'}
                 </button>
