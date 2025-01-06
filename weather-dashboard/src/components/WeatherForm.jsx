@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 
-const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit}) => {
+const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit, weatherData}) => {
     const [city, setCity] = useState('');
    
     const fetchWeather = async (query, isGeolocation = false) => {
@@ -26,6 +26,16 @@ const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit}) => {
             alert('City not found!');
         }
     };
+
+    useEffect(() => {
+        if (weatherData) {
+            const interval = setInterval(() => {
+                fetchWeather(weatherData.name); // Update weather data every 5 minutes
+            }, 300000); // 5 minutes
+
+            return () => clearInterval(interval); // Clear interval on component unmount
+        }
+    }, [weatherData]);
 
 
     const handleSearch = () => {
@@ -54,35 +64,37 @@ const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit}) => {
     };
    
     return (
-        <div className=" mt-2 p-2 rounded-lg shadow-lg flex flex-col items-center space-y-4 flex-grow w-full">
+        <div className=" mt-2 p-2 rounded-lg  flex flex-col items-center space-y-4 flex-grow w-full">
             <div className=" space-x-4 sm:grid-cols-2">
                 <input
                     type="text"
                     placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="p-2 rounded-md border-none outline-none focus:ring-2 focus:ring-indigo-300 text-black"
+                    className="p-2 rounded-md border-none py-2 px-8 outline-none focus:ring-2 focus:ring-indigo-300 text-black"
                 />
+
                 <button
                     onClick={handleSearch}
-                    className="bg-blue-400 px-4 py-2 rounded-md hover:bg-blue-500 transition"
+                    className="bg-blue-300 px-6 py-2 rounded-md hover:bg-blue-400 transition"
                 >
                     Search
                 </button>
+
                 <button
                     onClick={handleGeolocation}
-                    className="bg-blue-400 px-4 py-2 rounded-md hover:bg-blue-500 transition"
+                    className="bg-blue-300 px-7 py-2 rounded-md hover:bg-blue-400 transition"
                 >
                     Current Location
                 </button>
-
+                
                 <button
                     onClick={toggleUnit}
-                    className="mt-4 mb-4 bg-blue-400 px-4 py-2 rounded-md hover:bg-blue-500 transition"
+                    className="mt-4 mb-4 bg-blue-300 px-7 py-2 rounded-md hover:bg-blue-400 transition"
                  >
                 Switch to {unit === 'metric' ? '°F' : '°C'}
                 </button>
-               
+        
             </div>
             
         </div>
@@ -91,5 +103,3 @@ const WeatherForm = ({ setWeatherData, setForecastData, unit, setUnit}) => {
 };
 
 export default WeatherForm;
-
-

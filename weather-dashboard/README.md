@@ -22,6 +22,7 @@ The Weather Dashboard will provide users with easy-to-access weather information
 
 ## Setup
 - Clone this repository.
+- cd into weather dashboard directory.
 - Install vite and its dependencies.
-- Set up API keys and test basic API calls to ensure data is being retrieved.
-
+- Start development server with command npm run dev
+- Set up API keys and test basic API calls to ensure data is being fetched correctly.

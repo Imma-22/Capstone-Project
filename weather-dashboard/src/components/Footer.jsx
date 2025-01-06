@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="py-4 bg-gray-600 text-white text-center w-full">
+        <footer className="pt-8 text-gray-500 text-center font-extrabold text-xs w-full ">
             <p>&copy; {new Date().getFullYear()} Weather Dashboard.</p>
             <p>
                 Data provided by{' '}

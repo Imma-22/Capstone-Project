@@ -10,11 +10,11 @@ const ForecastInfo = ({ data, unit }) => {
     }, {});
 
     return (
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full md:w-2/3 lg:w-full">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             {Object.entries(groupedData).map(([date, entries]) => (
                 <div
                     key={date}
-                    className="bg-gradient-to-r from-slate-100 to-sky-500 text-black p-4 rounded-lg shadow-lg"
+                    className="bg-blue-200 text-black p-4 rounded-lg shadow-lg"
                 >
                     <h3 className="font-bold mb-2">{date}</h3>
                     {entries.slice(0, 3).map((entry) => {
@@ -28,6 +28,8 @@ const ForecastInfo = ({ data, unit }) => {
                              <div>
                              <p className="capitalize">{entry.weather[0].description}</p>
                             <p className="w-15 h-10">🌡️ {entry.main.temp}°{unit === 'metric' ? 'C' : 'F'} </p>
+                            <p className="text-lg">💧 Humidity: {entry.main.humidity}%</p>
+                            
                             
                         </div>
                         </div>
